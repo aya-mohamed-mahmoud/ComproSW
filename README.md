@@ -1,2 +1,2 @@
 # ComproSW
-This repository for EA course
+This repository for EA course project
