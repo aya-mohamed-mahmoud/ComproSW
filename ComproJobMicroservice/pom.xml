@@ -8,10 +8,10 @@
 		<version>2.3.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.miu.eurecaClient</groupId>
-	<artifactId>ComproSofwareEurecaClient</artifactId>
+	<groupId>com.miu.comproJobMicroservice</groupId>
+	<artifactId>comproJobMicroservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ComproSofwareEurecaClient</name>
+	<name>ComproJobMicroservice</name>
 	<description>Compro software client</description>
 
 	<properties>

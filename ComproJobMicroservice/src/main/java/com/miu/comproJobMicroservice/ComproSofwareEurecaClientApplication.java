@@ -1,4 +1,4 @@
-package com.miu.eurecaClient;
+package com.miu.comproJobMicroservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
