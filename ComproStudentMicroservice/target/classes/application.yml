@@ -1,0 +1,17 @@
+
+server:
+     port: 8088
+spring:
+
+  application:
+    name: smaple-spring-rest-service
+  datasource:
+    url: jdbc:mysql://localhost/comprodb?serverTimezone=GMT-6
+    username: ea
+    password: cs544
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    
+    
+   
