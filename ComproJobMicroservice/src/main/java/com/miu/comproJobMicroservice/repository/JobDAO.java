@@ -1,5 +1,11 @@
 package com.miu.comproJobMicroservice.repository;
 
-public class JobDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.miu.comproJobMicroservice.model.Job;
+
+@Repository
+public interface JobDAO extends JpaRepository<Job, Integer>{
 
 }

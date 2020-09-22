@@ -1,5 +1,4 @@
 package com.miu.comproJobMicroservice.service;
 
-public class JobServices {
-
+public interface JobSearchService {
 }

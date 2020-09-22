@@ -5,26 +5,29 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import org.hibernate.validator.constraints.Length;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class JobSearchReport {
 	@Id
 	@GeneratedValue
 	private int id;
-
 	private LocalDate submittedDate;
 
-	@Length(min = 30, max = 100)
-	private String desc;
+	private String description;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "student_id")
+	private Student student;
 
 	public JobSearchReport() {
 	}
 
 	public JobSearchReport(LocalDate submittedDate, String desc) {
 		this.submittedDate = submittedDate;
-		this.desc = desc;
+		this.description = desc;
 	}
 
 	public LocalDate getSubmittedDate() {
@@ -36,13 +39,27 @@ public class JobSearchReport {
 	}
 
 	public String getDesc() {
-		return desc;
+		return description;
 	}
 
 	public void setDesc(String desc) {
-		this.desc = desc;
+		this.description = desc;
 	}
-	
-	
-	
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 }

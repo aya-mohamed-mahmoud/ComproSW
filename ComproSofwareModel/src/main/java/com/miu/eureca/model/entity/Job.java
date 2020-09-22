@@ -1,11 +1,14 @@
 package com.miu.eureca.model.entity;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 
 @Entity
 public class Job {
@@ -15,6 +18,12 @@ public class Job {
 	private double salary;
 	private String title;
 
+	@OneToOne(mappedBy = "job")
+	private Student student;
+	
+	@OneToMany(mappedBy = "jobStudent")
+	private Collection<CPTReport> cptReport;
+	
 	private LocalDate startDate;
 
 	public Job() {

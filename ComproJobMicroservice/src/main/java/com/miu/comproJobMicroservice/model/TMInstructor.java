@@ -1,4 +1,4 @@
-package com.miu.eureca.model.entity;
+package com.miu.comproJobMicroservice.model;
 
 import javax.persistence.PrimaryKeyJoinColumn;
 
