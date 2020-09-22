@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -33,34 +34,74 @@ public class Student {
     @Embedded
     private  Address address;
     
+    @ManyToMany
+    private List<Attendance> attendances= new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER)
+    private  List<Grade> grades=new ArrayList<>();   
+    
+  //@ManyToOne
+    private String coach;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Course> courses= new ArrayList<>();
     
 //    @OneToOne
-//    private  Job job;
+    private  String jobId;
 //    
-    @OneToMany
-    private  List<Grade> grades=new ArrayList<>();   
+   
 //    
-    //@ManyToOne
-    private Coach coach;
+    
 //    
 //    @ManyToOne
-//    private Department department;
-//    
-//    @OneToOne
-//    private Appointment appointment; 
-//    
-//    @OneToMany
-//    private  List<JobSearchReport> jobsearchreport= new ArrayList<>();
-//    
-    @ManyToMany
-    private List<Course> courses= new ArrayList<>();
-public Coach getCoach() {
+    private String departmentId;
+public String getCoach() {
 		return coach;
 	}
 
-	public void setCoach(Coach coach) {
+	public void setCoach(String coach) {
 		this.coach = coach;
 	}
+
+	public String getJobId() {
+		return jobId;
+	}
+
+	public void setJobId(String jobId) {
+		this.jobId = jobId;
+	}
+
+	public String getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
+	}
+
+	public String getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(String appointment) {
+		this.appointment = appointment;
+	}
+
+	public String getJobsearchreportId() {
+		return jobsearchreportId;
+	}
+
+	public void setJobsearchreportId(String jobsearchreportId) {
+		this.jobsearchreportId = jobsearchreportId;
+	}
+
+	//    
+//    @OneToOne    
+    private String appointment; 
+//    
+//    @OneToMany
+    private  String jobsearchreportId;
+//    
+    
+
 
 public List<Grade> getGrades() {
 		return grades;
@@ -91,8 +132,7 @@ public List<Grade> getGrades() {
 	}
 
 	//    
-    @ManyToMany
-   private List<Attendance> attendances= new ArrayList<>();
+   
 //    @OneToMany
 //    private  List<TMRecord> tmRecords= new ArrayList<>();
 //    @OneToOne
