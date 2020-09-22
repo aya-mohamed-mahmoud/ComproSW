@@ -1,12 +1,10 @@
 package edu.miu.cs544.eaproject.team5.studentmicroservice.model;
 
-import com.sun.org.apache.xpath.internal.operations.String;
-
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Address {
-    private String street;
+	private String street;
     private String city;
     private String state;
     private String zip;

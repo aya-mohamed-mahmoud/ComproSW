@@ -1,10 +1,21 @@
 package edu.miu.cs544.eaproject.team5.studentmicroservice.model;
 
-import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -21,29 +32,76 @@ public class Student {
     private Double GPA;
     @Embedded
     private  Address address;
-    @OneToOne
-    private  Job job;
+    
+    
+//    @OneToOne
+//    private  Job job;
+//    
+    @OneToMany
+    private  List<Grade> grades=new ArrayList<>();   
+//    
+    //@ManyToOne
+    private Coach coach;
+//    
+//    @ManyToOne
+//    private Department department;
+//    
+//    @OneToOne
+//    private Appointment appointment; 
+//    
+//    @OneToMany
+//    private  List<JobSearchReport> jobsearchreport= new ArrayList<>();
+//    
     @ManyToMany
     private List<Course> courses= new ArrayList<>();
+public Coach getCoach() {
+		return coach;
+	}
+
+	public void setCoach(Coach coach) {
+		this.coach = coach;
+	}
+
+public List<Grade> getGrades() {
+		return grades;
+	}
+
+	public void setGrades(List<Grade> grades) {
+		this.grades = grades;
+	}
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+
+	public List<Attendance> getAttendances() {
+		return attendances;
+	}
+
+	public void setAttendances(List<Attendance> attendances) {
+		this.attendances = attendances;
+	}
+
+	public void setGPA(Double gPA) {
+		GPA = gPA;
+	}
+
+	//    
     @ManyToMany
-    private List<Attendance> attendances= new ArrayList<>();
-    @OneToMany
-    private  List<TMRecord> tmRecords= new ArrayList<>();
-    @OneToOne
-    private  JobSearchReport jobSearchReport;
+   private List<Attendance> attendances= new ArrayList<>();
+//    @OneToMany
+//    private  List<TMRecord> tmRecords= new ArrayList<>();
+//    @OneToOne
+//    private  JobSearchReport jobSearchReport;
 
     public Student() {
     }
 
-    public Student(int id, String name, String studentId, Date enrollmentDate, Date graduationDate, double GPA, Address address) {
-        this.id = id;
-        this.name = name;
-        this.studentId = studentId;
-        this.enrollmentDate = enrollmentDate;
-        this.graduationDate = graduationDate;
-        this.GPA = GPA;
-        this.address = address;
-    }
+    
 
     public int getId() {
         return id;
@@ -100,4 +158,6 @@ public class Student {
     public void setAddress(Address address) {
         this.address = address;
     }
+    
+    
 }
