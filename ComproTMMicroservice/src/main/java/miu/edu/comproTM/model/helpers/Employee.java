@@ -4,24 +4,18 @@ package miu.edu.comproTM.model;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
+@Embeddable
 public class Employee {
-	@Id
-	@Column(name ="emp_id")
-	private Long id;
 	
-	@Column(name = "emp_name")
 	private String name;
-	
 	private String responsibiltyDesc;
 	private String officeID;
-	
-	@Temporal(TemporalType.DATE)
 	private LocalDate hiringDate;
 	
 	
@@ -36,6 +30,7 @@ public class Employee {
 		this.officeID = officeID;
 		this.hiringDate = hiringDate;
 	}
+	
 	public String getName() {
 		return name;
 	}
