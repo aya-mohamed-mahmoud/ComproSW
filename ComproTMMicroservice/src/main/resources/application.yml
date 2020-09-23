@@ -1,0 +1,26 @@
+server:
+     port: 8092
+
+spring: 
+
+  application:
+    name: smaple-spring-rest-service
+  datasource:
+    url: jdbc:mysql://localhost/comprodb
+    username: ea
+    password: cs544
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+
+    hibernate:
+
+      ddl-auto: create
+
+    generate-ddl: true
+
+    properties:
+
+      hibernate:
+
+        dialect:MySQL8Dialect
