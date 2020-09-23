@@ -1,15 +1,15 @@
 package miu.edu.comproTM.repository;
 
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 
-import miu.edu.comproTM.model.Student;
-import miu.edu.comproTM.model.TmInstructor;
+import miu.edu.comproTM.model.InstructorStudent;
+import org.springframework.stereotype.Repository;
 
-public interface StudentRepository extends CrudRepository<Student,Integer>{
-	
-	public List<Student>  assiggnStudent();
- 
-   
- }
+import java.util.List;
+
+@Repository
+public interface InstructorStudentRepository extends CrudRepository<InstructorStudent,Integer>{
+
+    List<InstructorStudent> getInstructorStudentsByInstructor_Id(int instructorId);
+
+}

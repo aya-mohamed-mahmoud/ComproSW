@@ -1,31 +1,78 @@
 package miu.edu.comproTM.model;
 
+import miu.edu.comproTM.model.helpers.Employee;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
-public class TmInstructor extends Employee{
+@Entity
+public class TmInstructor {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private LocalDate date;
-    
-    @OneToMany
-    private List<SessionAttendance> tmattandance= new ArrayList<>();
-    
-    @OneToMany
-    private List<Student> student= new ArrayList<>();
+	private String name;
+	private String responsibiltyDesc;
+	private String officeID;
+	private LocalDate hiringDate;
+//	@Embedded
+//	private Employee employee;
+
+	public TmInstructor(int id, String name, String responsibiltyDesc, String officeID, LocalDate hiringDate) {
+		this.id = id;
+		this.name = name;
+		this.responsibiltyDesc = responsibiltyDesc;
+		this.officeID = officeID;
+		this.hiringDate = hiringDate;
+	}
+
+	@OneToMany(mappedBy="instructor", fetch = FetchType.EAGER)
+	private List<InstructorStudent> instructorStudents;
 
 	public TmInstructor() {
 		super();
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getResponsibiltyDesc() {
+		return responsibiltyDesc;
+	}
+
+	public void setResponsibiltyDesc(String responsibiltyDesc) {
+		this.responsibiltyDesc = responsibiltyDesc;
+	}
+
+	public String getOfficeID() {
+		return officeID;
+	}
+
+	public void setOfficeID(String officeID) {
+		this.officeID = officeID;
+	}
+
+	public LocalDate getHiringDate() {
+		return hiringDate;
+	}
+
+	public void setHiringDate(LocalDate hiringDate) {
+		this.hiringDate = hiringDate;
+	}
+
+	public List<InstructorStudent> getInstructorStudents() {
+		return instructorStudents;
+	}
+
+	public void setInstructorStudents(List<InstructorStudent> instructorStudents) {
+		this.instructorStudents = instructorStudents;
+	}
 
 	public int getId() {
 		return id;
@@ -35,49 +82,5 @@ public class TmInstructor extends Employee{
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-
-	public List<SessionAttendance> getTmattandance() {
-		return tmattandance;
-	}
-
-
-	public void setTmattandance(List<SessionAttendance> tmattandance) {
-		this.tmattandance = tmattandance;
-	}
-
-
-	public List<Student> getStudent() {
-		return student;
-	}
-
-
-	public void setStudent(List<Student> student) {
-		this.student = student;
-	}
-
-
-
-
     
 }

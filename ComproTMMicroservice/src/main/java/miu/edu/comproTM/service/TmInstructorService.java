@@ -2,11 +2,33 @@ package miu.edu.comproTM.service;
 
 import java.util.List;
 
-import miu.edu.comproTM.model.Student;
-import miu.edu.comproTM.model.TMRecord;
+import miu.edu.comproTM.model.InstructorStudent;
+import miu.edu.comproTM.model.SessionAttendance;
+import miu.edu.comproTM.model.helpers.InstructorStudentViewModel;
+import miu.edu.comproTM.model.TmInstructor;
+import miu.edu.comproTM.model.helpers.InstructorViewModel;
 
 public interface TmInstructorService {
 	
-   public List< Student> viewAllStudents();
+   //Instructor related
+   public List<InstructorViewModel> getAllInstructors();
+   public TmInstructor getTmInstructor(int id);
+   public Boolean saveTmInstructor(TmInstructor instructor);
+   public Boolean updateTmInstructor(TmInstructor instructor);
+   public Boolean deleteTmInstructor(int id);
    
+   //Instructor Students
+   public List<InstructorStudentViewModel> viewAllInstructorStudents(Integer InstructorId);
+   public List<TmInstructor> viewAllStudents();
+   
+   public InstructorStudent saveInstructorStudent(InstructorStudent instructorStudent);
+   public Boolean deleteInstructorStudent(int id);
+   
+   //
+   public List<SessionAttendance> getSessionAttendances();
+   public List<SessionAttendance> getSessionAttendancesByInstructor(int instructorId);
+   public SessionAttendance saveSessionAttendance(SessionAttendance sessionAttendance);
+   public Boolean updateSessionAttendance(SessionAttendance sessionAttendance); 
+   public Boolean deleteSessionAttendance(Integer id);
+
 }

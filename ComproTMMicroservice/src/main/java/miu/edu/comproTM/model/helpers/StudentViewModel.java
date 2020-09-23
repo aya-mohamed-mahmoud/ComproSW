@@ -1,4 +1,4 @@
-package miu.edu.comproTM.model;
+package miu.edu.comproTM.model.helpers;
 
 
 import java.util.Date;
@@ -9,5 +9,5 @@ public class StudentViewModel {
     private String studentId;
     private Date enrollmentDate;
     private Date graduationDate;
-    private Double GPA;   
+    private Double GPA;
 }

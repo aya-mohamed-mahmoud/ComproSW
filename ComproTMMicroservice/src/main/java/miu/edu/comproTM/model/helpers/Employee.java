@@ -1,4 +1,4 @@
-package miu.edu.comproTM.model;
+package miu.edu.comproTM.model.helpers;
 
 
 import java.time.LocalDate;
