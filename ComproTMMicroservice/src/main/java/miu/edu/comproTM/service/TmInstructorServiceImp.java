@@ -1,6 +1,6 @@
 package miu.edu.comproTM.service;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,20 +65,15 @@ public class TmInstructorServiceImp implements TmInstructorService {
 		List<InstructorStudent> students =
 				instructorStudentRepository.getInstructorStudentsByInstructor_Id(InstructorId);
 
-		List<StudentViewModel > studentsViewModel = new ArrayList<>();
-
 		return students.stream().map(t-> {
-			return new InstructorStudentViewModel(t);
+			//:TODO interface with the microservice, get student by id
+			//StudentViewModel svm = restTemplate.getForObject("",StudentViewModel.class);
+			StudentViewModel svm = new StudentViewModel(1,"mock name","mock id",new Date(),new Date(),3.9);
+			return new InstructorStudentViewModel(t,t.getInstructor(),svm);
 		}).collect(Collectors.toList());
 
-		//:TODO interface with the microservice, get student by id
-		//		for (InstructorStudent s : students){
-		//			// Has to return a student object
-		//			//Student s = restTemplate.getForObject("url",StudentViewModel.class);
-		//			StudentViewModel svm = new StudentViewModel();
-		//		}
 
-		//return students;
+
 	}
 	@Override
 	public List<TmInstructor> viewAllStudents() {
@@ -98,12 +93,14 @@ public class TmInstructorServiceImp implements TmInstructorService {
 
 	@Override
 	public List<SessionAttendance> getSessionAttendances() {
-		return sessionAttendanceRepository.findAll();
+		List<SessionAttendance> sessions =  sessionAttendanceRepository.findAll();
+		return sessions;
 	}
 
 	@Override
 	public List<SessionAttendance> getSessionAttendancesByInstructor(int instructorId) {
-		return sessionAttendanceRepository.findAll();
+		List<SessionAttendance> sessions = sessionAttendanceRepository.findAll();
+		return sessions.stream().filter(t->t.getInstructorStudent().getInstructor().getId() == instructorId).collect(Collectors.toList());
 	}
 
 	@Override
@@ -113,7 +110,13 @@ public class TmInstructorServiceImp implements TmInstructorService {
 
 	@Override
 	public Boolean updateSessionAttendance(SessionAttendance sessionAttendance) {
-		sessionAttendanceRepository.save(sessionAttendance);
+		SessionAttendance st = sessionAttendanceRepository.findById(sessionAttendance.getId()).get();
+		if(st!=null){
+			st.setDate(sessionAttendance.getDate());
+			st.setMeditationAttendance(sessionAttendance.isMeditationAttendance());
+			st.setType(sessionAttendance.getType());
+			sessionAttendanceRepository.save(st);
+		};
 		return true;
 	}
 
@@ -122,8 +125,5 @@ public class TmInstructorServiceImp implements TmInstructorService {
 		sessionAttendanceRepository.deleteById(id);
 		return true;
 	}
-
-	
-	
    
 }

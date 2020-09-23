@@ -16,17 +16,17 @@ public class InstructorStudent {
 	@JoinColumn(name = "InstructorId")
 	private TmInstructor instructor;
 
-	@OneToMany(mappedBy = "instructorStudent",fetch=FetchType.EAGER)
-	private List<SessionAttendance> sessionAttendances;
+//	@OneToMany(mappedBy = "instructorStudent",fetch=FetchType.EAGER)
+//	private List<SessionAttendance> sessionAttendances;
 
 	public InstructorStudent() {
 	}
 
-	public InstructorStudent(Integer id, Integer studentId, TmInstructor instructor, List<SessionAttendance> sessionAttendances) {
+	public InstructorStudent(Integer id, Integer studentId, TmInstructor instructor) {
 		this.id = id;
 		this.studentId = studentId;
 		this.instructor = instructor;
-		this.sessionAttendances = sessionAttendances;
+//		this.sessionAttendances = sessionAttendances;
 	}
 
 	public Integer getId() {
@@ -53,11 +53,11 @@ public class InstructorStudent {
 		this.studentId = studentId;
 	}
 
-	public List<SessionAttendance> getSessionAttendances() {
-		return sessionAttendances;
-	}
-
-	public void setSessionAttendances(List<SessionAttendance> sessionAttendances) {
-		this.sessionAttendances = sessionAttendances;
-	}
+//	public List<SessionAttendance> getSessionAttendances() {
+//		return sessionAttendances;
+//	}
+//
+//	public void setSessionAttendances(List<SessionAttendance> sessionAttendances) {
+//		this.sessionAttendances = sessionAttendances;
+//	}
 }

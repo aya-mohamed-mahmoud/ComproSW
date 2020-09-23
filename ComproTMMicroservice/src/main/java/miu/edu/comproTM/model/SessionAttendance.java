@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 @Entity
 public class SessionAttendance {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
@@ -23,6 +24,9 @@ public class SessionAttendance {
 	public SessionAttendance() {
 		super();
 	}
+
+	@ManyToOne
+	private InstructorStudent instructorStudent;
 
 	public SessionAttendance(int id, LocalDate date, SessionType type, boolean meditationAttendance, InstructorStudent instructorStudent) {
 		Id = id;
@@ -47,9 +51,6 @@ public class SessionAttendance {
 	public void setInstructorStudent(InstructorStudent instructorStudent) {
 		this.instructorStudent = instructorStudent;
 	}
-
-	@ManyToOne
-	private InstructorStudent instructorStudent;
 
 	public int getId() {
 		return Id;

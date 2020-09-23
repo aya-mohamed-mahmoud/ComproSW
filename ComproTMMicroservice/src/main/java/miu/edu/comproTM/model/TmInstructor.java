@@ -1,5 +1,6 @@
 package miu.edu.comproTM.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import miu.edu.comproTM.model.helpers.Employee;
 
 import java.time.LocalDate;
@@ -16,8 +17,6 @@ public class TmInstructor {
 	private String responsibiltyDesc;
 	private String officeID;
 	private LocalDate hiringDate;
-//	@Embedded
-//	private Employee employee;
 
 	public TmInstructor(int id, String name, String responsibiltyDesc, String officeID, LocalDate hiringDate) {
 		this.id = id;
@@ -27,7 +26,8 @@ public class TmInstructor {
 		this.hiringDate = hiringDate;
 	}
 
-	@OneToMany(mappedBy="instructor", fetch = FetchType.EAGER)
+	@JsonIgnore
+	@OneToMany(mappedBy="instructor")
 	private List<InstructorStudent> instructorStudents;
 
 	public TmInstructor() {

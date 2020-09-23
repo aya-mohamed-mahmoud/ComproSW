@@ -1,6 +1,5 @@
 package miu.edu.comproTM.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import miu.edu.comproTM.model.InstructorStudent;
@@ -11,67 +10,67 @@ import miu.edu.comproTM.model.helpers.InstructorViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import miu.edu.comproTM.model.helpers.StudentViewModel;
 import miu.edu.comproTM.service.TmInstructorServiceImp;
 
 @RestController
-@RequestMapping("/instructor")
+@RequestMapping("/tm/")
 public class TmInstructorController {
 
     @Autowired
     private TmInstructorServiceImp tmInstructorServiceImp;
 	
-	@PostMapping("/save")
+	@PostMapping("instructor/save")
     public Boolean saveInstructor(@RequestBody TmInstructor instructor){
 	    return tmInstructorServiceImp.saveTmInstructor(instructor);
     }
 
-    @GetMapping("/list")
+    @GetMapping("instructor/list")
     public List<InstructorViewModel> getAllTmInstructors(){
-	    return tmInstructorServiceImp.getAllInstructors();
+	    List<InstructorViewModel> list = tmInstructorServiceImp.getAllInstructors();
+	    return list;
     }
 
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("instructor/delete/{id}")
     public Boolean deleteInstructor(@PathVariable int id){
 	    return tmInstructorServiceImp.deleteTmInstructor(id);
     }
 
-    @GetMapping("/{instructorId}/students")
+    @GetMapping("instructor/{instructorId}/students")
     public List<InstructorStudentViewModel> viewAllStudents(@PathVariable int instructorId) {
-       return tmInstructorServiceImp.viewAllInstructorStudents(instructorId);
+	    List<InstructorStudentViewModel> list = tmInstructorServiceImp.viewAllInstructorStudents(instructorId);
+        return list;
     }
 
-    @PostMapping("/assignStudent")
+    @PostMapping("instructor/assignStudent")
     public Boolean assignStudent(@RequestBody InstructorStudent student) {
         InstructorStudent instructorStudent = tmInstructorServiceImp.saveInstructorStudent(student);
         return instructorStudent!=null ? true : false;
     }
 
-    @PostMapping("/removeStudent")
+    @PostMapping("instructor/removeStudent")
     public Boolean removeStudent(@RequestParam InstructorStudent student) {
       return  tmInstructorServiceImp.deleteInstructorStudent(student.getId());
     }
 
-    @PostMapping("/saveAppointment")
-    public Boolean setupAppointment(@RequestBody SessionAttendance sessionAttendance) {
-        SessionAttendance appointment =  tmInstructorServiceImp.saveSessionAttendance(sessionAttendance);
+    @PostMapping("session/saveAppointment")
+    public Boolean setupAppointment(@RequestBody SessionAttendance session) {
+        SessionAttendance appointment =  tmInstructorServiceImp.saveSessionAttendance(session);
         return appointment!=null ? true : false;
     }
 
-    @PostMapping("/takeDailyAttendance")
+    @PostMapping("session/takeDailyAttendance")
     public Boolean updateAppointment(@RequestBody SessionAttendance sessionAttendance) {
-        SessionAttendance appointment =  tmInstructorServiceImp.saveSessionAttendance(sessionAttendance);
-        return appointment!=null ? true : false;
+        return tmInstructorServiceImp.updateSessionAttendance(sessionAttendance);
     }
 
-    @GetMapping("/allAppointments")
+    @GetMapping("session/allAppointments")
     public List<SessionAttendance> getAllAppointments(){
 	    return tmInstructorServiceImp.getSessionAttendances();
     }
 
-    @GetMapping("/appointments/{instructorId}")
-    public List<SessionAttendance> getAllAppointments(@PathVariable int instructorId){
+    @GetMapping("session/appointments/{instructorId}")
+    public List<SessionAttendance> getAllAppointmentsByInstructor(@PathVariable int instructorId){
         return tmInstructorServiceImp.getSessionAttendancesByInstructor(instructorId);
     }
 
