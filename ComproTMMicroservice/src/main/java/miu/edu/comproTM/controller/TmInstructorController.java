@@ -29,9 +29,9 @@ public class TmInstructorController {
 	    return list;
     }
 
-
     @DeleteMapping("instructor/delete/{id}")
     public Boolean deleteInstructor(@PathVariable int id){
+
 	    return tmInstructorServiceImp.deleteTmInstructor(id);
     }
 

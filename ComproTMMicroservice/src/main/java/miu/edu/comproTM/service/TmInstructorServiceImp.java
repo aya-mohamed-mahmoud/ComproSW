@@ -66,11 +66,11 @@ public class TmInstructorServiceImp implements TmInstructorService {
 
 		return students.stream().map(t-> {
 			//:TODO interface with the microservice, get student by
-			//StudentViewModel svm = restTemplate.getForObject("http://student-microservice/student/"+t.studentId,StudentViewModel.class);
-			StudentViewModel svm = new StudentViewModel(1,"mock name","mock id",new Date(),new Date(),3.9);
+			String api = "http://localhost:8060/students/"+t.getStudentId();
+			StudentViewModel svm = restTemplate.getForObject(api,StudentViewModel.class);
+			//StudentViewModel svm = new StudentViewModel(1,"mock name","mock id",new Date(),new Date(),3.9);
 			return new InstructorStudentViewModel(t,t.getInstructor(),svm);
 		}).collect(Collectors.toList());
-
 
 
 	}
