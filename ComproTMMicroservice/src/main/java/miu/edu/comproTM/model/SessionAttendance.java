@@ -3,10 +3,8 @@ package miu.edu.comproTM.model;
 
 import miu.edu.comproTM.model.helpers.SessionType;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class SessionAttendance {

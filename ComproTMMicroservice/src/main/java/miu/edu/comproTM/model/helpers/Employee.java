@@ -1,14 +1,8 @@
 package miu.edu.comproTM.model.helpers;
 
 
-import java.time.LocalDate;
-
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.time.LocalDate;
 
 @Embeddable
 public class Employee {

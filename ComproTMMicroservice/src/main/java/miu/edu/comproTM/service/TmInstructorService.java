@@ -1,12 +1,12 @@
 package miu.edu.comproTM.service;
 
-import java.util.List;
-
 import miu.edu.comproTM.model.InstructorStudent;
 import miu.edu.comproTM.model.SessionAttendance;
-import miu.edu.comproTM.model.helpers.InstructorStudentViewModel;
 import miu.edu.comproTM.model.TmInstructor;
+import miu.edu.comproTM.model.helpers.InstructorStudentViewModel;
 import miu.edu.comproTM.model.helpers.InstructorViewModel;
+
+import java.util.List;
 
 public interface TmInstructorService {
 	

@@ -1,22 +1,21 @@
 package miu.edu.comproTM.service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import miu.edu.comproTM.model.helpers.InstructorStudentViewModel;
-import miu.edu.comproTM.model.helpers.InstructorViewModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import miu.edu.comproTM.model.InstructorStudent;
 import miu.edu.comproTM.model.SessionAttendance;
-import miu.edu.comproTM.model.helpers.StudentViewModel;
 import miu.edu.comproTM.model.TmInstructor;
+import miu.edu.comproTM.model.helpers.InstructorStudentViewModel;
+import miu.edu.comproTM.model.helpers.InstructorViewModel;
+import miu.edu.comproTM.model.helpers.StudentViewModel;
 import miu.edu.comproTM.repository.InstructorStudentRepository;
 import miu.edu.comproTM.repository.SessionAttendanceRepository;
 import miu.edu.comproTM.repository.TmInstructorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TmInstructorServiceImp implements TmInstructorService {
@@ -45,9 +44,9 @@ public class TmInstructorServiceImp implements TmInstructorService {
 	@Override
 	public Boolean saveTmInstructor(TmInstructor instructor) {
 		TmInstructor saved = tmInstructorRepository.save(instructor);
-		return saved!=null ? true : false;
-	}
 
+		return saved!=null ? true : false;
+}
 	@Override
 	public Boolean updateTmInstructor(TmInstructor instructor) {
 		TmInstructor saved = tmInstructorRepository.save(instructor);

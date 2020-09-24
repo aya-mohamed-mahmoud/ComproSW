@@ -1,7 +1,6 @@
 package miu.edu.comproTM.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class InstructorStudent {

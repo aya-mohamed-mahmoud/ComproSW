@@ -1,12 +1,10 @@
 package miu.edu.comproTM.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import miu.edu.comproTM.model.helpers.Employee;
-
-import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class TmInstructor {

@@ -1,23 +1,22 @@
 package miu.edu.comproTM.controller;
 
-import java.util.List;
-
 import miu.edu.comproTM.model.InstructorStudent;
 import miu.edu.comproTM.model.SessionAttendance;
 import miu.edu.comproTM.model.TmInstructor;
 import miu.edu.comproTM.model.helpers.InstructorStudentViewModel;
 import miu.edu.comproTM.model.helpers.InstructorViewModel;
+import miu.edu.comproTM.service.TmInstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import miu.edu.comproTM.service.TmInstructorServiceImp;
+import java.util.List;
 
 @RestController
 @RequestMapping("/tm/")
 public class TmInstructorController {
 
     @Autowired
-    private TmInstructorServiceImp tmInstructorServiceImp;
+    private TmInstructorService tmInstructorServiceImp;
 	
 	@PostMapping("instructor/save")
     public Boolean saveInstructor(@RequestBody TmInstructor instructor){
@@ -37,7 +36,7 @@ public class TmInstructorController {
     }
 
     @GetMapping("instructor/{instructorId}/students")
-    public List<InstructorStudentViewModel> viewAllStudents(@PathVariable int instructorId) {
+    public List<InstructorStudentViewModel> viewAllStudentsByInstructor(@PathVariable int instructorId) {
 	    List<InstructorStudentViewModel> list = tmInstructorServiceImp.viewAllInstructorStudents(instructorId);
         return list;
     }
